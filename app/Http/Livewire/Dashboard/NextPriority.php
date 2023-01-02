@@ -9,9 +9,9 @@ use Livewire\Component;
 class NextPriority extends Component
 {
     /**
-     * @var Task
+     * @var ?Task
      */
-    public Task $task;
+    public ?Task $task;
 
     /**
      * @return View

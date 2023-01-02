@@ -4,8 +4,14 @@
     </x-card-header>
 
     <div class="divide-y divide-gray-300">
-        @foreach ($tasks as $task)
-            <x-task :task="$task" />
-        @endforeach
+        @if($tasks->isNotEmpty())
+            @foreach ($tasks as $task)
+                <x-task :task="$task" />
+            @endforeach
+        @else
+            <x-card-body>
+                There are no tasks to display
+            </x-card-body>
+        @endif
     </div>
 </x-card>

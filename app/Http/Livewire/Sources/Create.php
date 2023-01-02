@@ -75,7 +75,7 @@ class Create extends Component
             ],
             'credentials.expires_at' => [
                 'required_if:vendor,' . Vendors::GitHub->value,
-                'string',
+                'date',
             ],
             'credentials.company_name' => [
                 'required_if:vendor,' . Vendors::ActiveCollab->value,

@@ -9,9 +9,9 @@ use Livewire\Component;
 class Backlog extends Component
 {
     /**
-     * @var Collection
+     * @var ?Collection
      */
-    public Collection $tasks;
+    public ?Collection $tasks;
 
     /**
      * @return View

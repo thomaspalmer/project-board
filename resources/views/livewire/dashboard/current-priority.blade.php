@@ -1,4 +1,4 @@
-<x-card>
+<x-card id="current-priority">
     <x-card-header>
         Current Priority
     </x-card-header>

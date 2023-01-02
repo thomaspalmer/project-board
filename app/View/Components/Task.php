@@ -13,7 +13,7 @@ class Task extends Component
      * @return void
      */
     public function __construct(
-        public TaskModel $task
+        public ?TaskModel $task = null
     ) {}
 
     /**

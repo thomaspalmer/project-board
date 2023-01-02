@@ -9,9 +9,9 @@ use Livewire\Component;
 class CurrentPriority extends Component
 {
     /**
-     * @var Task
+     * @var ?Task
      */
-    public Task $task;
+    public ?Task $task;
 
     /**
      * @return View

@@ -15,7 +15,7 @@ class Source extends Model
      * @var string[]
      */
     protected $fillable = [
-        'user_id', 'vendor', 'active', 'credentials', 'name',
+        'user_id', 'name', 'vendor', 'active', 'credentials', 'error',
     ];
 
     /**

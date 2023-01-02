@@ -19,11 +19,12 @@
         @else
             <x-table>
                 <x-thead>
-                <tr>
-                    <x-th>Name</x-th>
-                    <x-th>Vendor</x-th>
-                    <x-th></x-th>
-                </tr>
+                    <tr>
+                        <x-th>Name</x-th>
+                        <x-th>Vendor</x-th>
+                        <x-th>Active</x-th>
+                        <x-th></x-th>
+                    </tr>
                 </x-thead>
 
                 <tbody>
@@ -31,6 +32,7 @@
                     <tr>
                         <x-td>{{$source->name}}</x-td>
                         <x-td>{{$source->vendor->name}}</x-td>
+                        <x-td>{{$source->active ? "Yes" : "No"}}</x-td>
                         <x-td width="1">
                             <div class="flex space-x-0.5" x-data>
                                 <x-primary-button click="$wire.toggleActive({{ $source->id }})">

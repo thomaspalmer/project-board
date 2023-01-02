@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Priorities;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -63,5 +64,21 @@ class Task extends Model
     public function getHighPriorityAttribute(): bool
     {
         return $this->priority === Priorities::High;
+    }
+
+    /**
+     * @return Builder
+     */
+    public function scopePriorityOrder(): Builder
+    {
+        $priorityOrder = '\'' . collect(Priorities::cases())
+                ->map(fn ($priority) => $priority->value)
+                ->join('\', \'') . '\'';
+
+        return $this
+            ->whereNull('completed_at')
+            ->orderByRaw('FIELD(priority, ' . $priorityOrder . ')')
+            ->orderBy('due_at', 'asc')
+            ->orderBy('created_at', 'asc');
     }
 }

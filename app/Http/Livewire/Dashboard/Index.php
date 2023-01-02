@@ -13,18 +13,7 @@ class Index extends Component
      */
     public function render(): View
     {
-        $priorityOrder = '\'' . collect(Priorities::cases())
-                ->map(fn ($priority) => $priority->value)
-                ->join('\', \'') . '\'';
-
-        $tasksInPriorityOrder = request()
-            ->user()
-            ->tasks()
-            ->whereNull('completed_at')
-            ->orderByRaw('FIELD(priority, ' . $priorityOrder . ')')
-            ->orderBy('due_at', 'asc')
-            ->orderBy('created_at', 'asc')
-            ->get();
+        $tasksInPriorityOrder = request()->user()->tasks()->priorityOrder()->get();
 
         return view('livewire.dashboard.index', [
             'current' => $tasksInPriorityOrder->first(),

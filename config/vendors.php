@@ -8,11 +8,11 @@ return [
         'src' => '/images/vendors/github.png',
         'value' => Vendors::GitHub,
     ],
-    [
-        'name' => 'Trello',
-        'src' => '/images/vendors/trello.png',
-        'value' => Vendors::Trello,
-    ],
+//    [
+//        'name' => 'Trello',
+//        'src' => '/images/vendors/trello.png',
+//        'value' => Vendors::Trello,
+//    ],
     [
         'name' => 'Active Collab',
         'src' => '/images/vendors/active-collab.png',
