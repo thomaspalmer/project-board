@@ -18,7 +18,7 @@
                 label="Vendor"
                 name="vendor"
             >
-                <div class="grid grid-cols-3 gap-6" x-data>
+                <div class="grid grid-cols-2 gap-6" x-data>
                     @foreach(config('vendors') as $vendor)
                         <div
                             class="rounded-lg h-20 flex items-center justify-center transform hover:scale-105 transition duration-200 cursor-pointer"
@@ -49,6 +49,7 @@
                             name="credentials"
                         >
                             <x-input
+                                type="password"
                                 name="credentials.personal_access_token"
                             />
                         </x-field-container>

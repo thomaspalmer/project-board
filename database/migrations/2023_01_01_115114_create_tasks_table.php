@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('source_id')->references('id')->on('sources')->onDelete('cascade');
 
             $table->string('title');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('priority');
             $table->timestamp('due_at')->nullable();
             $table->timestamp('completed_at')->nullable();

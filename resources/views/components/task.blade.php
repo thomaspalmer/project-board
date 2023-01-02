@@ -6,7 +6,11 @@
 
         <x-card-body>
             <article class="prose">
-                {!! $task->description !!}
+                @if($task->description_type === \App\Enums\DescriptionTypes::HTML)
+                    {!! $task->description !!}
+                @elseif ($task->description_type === \App\Enums\DescriptionTypes::Markdown)
+                    {!! Str::markdown($task->description) !!}
+                @endif
             </article>
         </x-card-body>
 

@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\Priorities;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Enums\{Priorities, DescriptionTypes};
+use Illuminate\Database\Eloquent\{Builder, Factories\HasFactory, Model, Relations\BelongsTo};
 
 class Task extends Model
 {
@@ -16,8 +13,8 @@ class Task extends Model
      * @var string[]
      */
     protected $fillable = [
-        'user_id', 'source_id', 'title', 'description', 'priority', 'due_at', 'completed_at', 'link',
-        'external_id',
+        'user_id', 'source_id', 'title', 'description', 'description_type', 'priority', 'due_at', 'completed_at',
+        'link', 'external_id',
     ];
 
     /**
@@ -40,6 +37,7 @@ class Task extends Model
      */
     protected $casts = [
         'priority' => Priorities::class,
+        'description_type' => DescriptionTypes::class,
     ];
 
     /**

@@ -54,6 +54,7 @@ class ActiveCollab extends Base implements Vendor
 
     /**
      * @return Collection
+     * @throws Exception
      */
     public function getNewTasks(): Collection
     {
@@ -64,7 +65,6 @@ class ActiveCollab extends Base implements Vendor
                     'title' => $task->name,
                     'description' => $task->body,
                     'priority' => $task->is_important ? Priorities::High : Priorities::Medium,
-                    'starts_at' => Carbon::createFromTimestamp($task->start_on),
                     'due_at' => Carbon::createFromTimestamp($task->due_on),
                     'link' => $this->token->getUrl() . $task->url_path,
                 ]);

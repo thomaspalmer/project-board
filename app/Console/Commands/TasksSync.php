@@ -32,7 +32,7 @@ class TasksSync extends Command
     {
         Source::where('active', true)
             ->get()
-            ->filter(fn ($source) => $source->vendor_info['interface'])
+            ->filter(fn ($source) => isset($source->vendor_info['interface']))
             ->each(function ($source) {
                 try {
                     // Get a list of new tasks
@@ -62,6 +62,8 @@ class TasksSync extends Command
                     $source->update([
                         'error' => $exception->getMessage(),
                     ]);
+
+                    dd($exception->getMessage());
                 }
             });
     }

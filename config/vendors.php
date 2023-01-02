@@ -7,6 +7,7 @@ return [
         'name' => 'GitHub',
         'src' => '/images/vendors/github.png',
         'value' => Vendors::GitHub,
+        'interface' => \App\Services\Vendors\GitHub::class,
     ],
 //    [
 //        'name' => 'Trello',
