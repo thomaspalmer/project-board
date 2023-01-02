@@ -8,6 +8,7 @@
         "php": "^8.1.2",
         "activecollab/activecollab-feather-sdk": "^3.1",
         "ascsoftw/livewire-toast": "^1.0",
+        "doctrine/dbal": "^3.5",
         "graham-campbell/github": "^11.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-frontend-presets/tall": "^5.0",

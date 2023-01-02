@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\{EmailVerificationController, LogoutController};
 use App\Http\Livewire\Auth\{Register, Login, Verify};
 use App\Http\Livewire\Auth\Passwords\{Confirm, Email, Reset};
 use App\Http\Livewire\Sources\{Index as SourcesIndex, Create as SourcesCreate};
+use App\Http\Livewire\Dashboard\Index as DashboardIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     // Dashboard
-    Route::view('/', 'pages.dashboard.index')->name('home');
+    Route::get('/', DashboardIndex::class)->name('home');
 
     // Sources
     Route::get('/sources', SourcesIndex::class)->name('sources');

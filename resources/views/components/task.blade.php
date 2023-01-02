@@ -18,21 +18,23 @@
         <x-card-footer class="flex justify-between items-center">
             <div class="flex space-x-2">
                 <span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                 <i class="fa-solid fa-alarm-clock mr-1"></i>
-                <span>{{ $task->due_at->format("d/m/y") }}</span>
-            </span>
+                     <i class="fa-solid fa-alarm-clock mr-1"></i>
+                    <span>{{ $task->due_at->format("d/m/y") }}</span>
+                </span>
 
                 <span
                     class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ $task->high_priority ? 'bg-red-300 text-red-800' : 'bg-gray-100 text-gray-800' }}">
-                <i class="fa-solid fa-light-emergency{{ $task->high_priority ? '-on' : '' }} mr-1"></i>
-                <span class="capitalize">{{ $task->priority }}</span>
-            </span>
+                    <i class="fa-solid fa-light-emergency{{ $task->high_priority ? '-on' : '' }} mr-1"></i>
+                    <span class="capitalize">{{ $task->priority }}</span>
+                </span>
 
-                <a href="{{ $task->link }}"
-                   class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-                    <i class="fa-solid fa-link mr-1"></i>
-                    <span>Link</span>
-                </a>
+                @if($task->link)
+                    <a href="{{ $task->link }}"
+                       class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                        <i class="fa-solid fa-link mr-1"></i>
+                        <span>Link</span>
+                    </a>
+                @endif
             </div>
 
             <div>

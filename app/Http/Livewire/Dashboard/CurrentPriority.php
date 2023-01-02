@@ -9,6 +9,13 @@ use Livewire\Component;
 class CurrentPriority extends Component
 {
     /**
+     * @var string[]
+     */
+    protected $listeners = [
+        'taskCreated' => '$refresh',
+    ];
+
+    /**
      * @var ?Task
      */
     public ?Task $task;

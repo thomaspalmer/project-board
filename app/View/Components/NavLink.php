@@ -12,8 +12,9 @@ class NavLink extends Component
      * @return void
      */
     public function __construct(
-        public string $href,
-        public ?string $onclick = null
+        public ?string $href = null,
+        public ?string $onclick = null,
+        public ?string $click = null,
     ) {}
 
     /**

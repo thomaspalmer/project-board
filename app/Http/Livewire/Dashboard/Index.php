@@ -2,12 +2,18 @@
 
 namespace App\Http\Livewire\Dashboard;
 
-use App\Enums\Priorities;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class Index extends Component
 {
+    /**
+     * @var string[]
+     */
+    protected $listeners = [
+        'taskCreated' => '$refresh',
+    ];
+
     /**
      * @return View
      */

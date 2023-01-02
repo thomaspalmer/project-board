@@ -10,7 +10,12 @@ class Index extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['sourceWasDeleted' => '$refresh'];
+    /**
+     * @var string[]
+     */
+    protected $listeners = [
+        'sourceWasDeleted' => '$refresh',
+    ];
 
     /**
      * @param int $id

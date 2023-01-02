@@ -6,7 +6,10 @@
     <div class="divide-y divide-gray-300">
         @if($tasks->isNotEmpty())
             @foreach ($tasks as $task)
-                <x-task :task="$task" />
+                <x-task
+                    wire:key="{{ $task->id }}"
+                    :task="$task"
+                />
             @endforeach
         @else
             <x-card-body>

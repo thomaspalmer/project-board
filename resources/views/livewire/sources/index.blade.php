@@ -1,7 +1,7 @@
 <div>
     <x-alert />
 
-    <livewire:sources.delete />
+    @livewire('sources.delete')
 
     <x-card>
         <x-card-header class="flex justify-between items-center">
@@ -42,7 +42,7 @@
                                 <x-primary-button click="$wire.toggleActive({{ $source->id }})">
                                     <i class="fa-solid {{ $source->active ? "fa-times" : "fa-check" }}"></i>
                                 </x-primary-button>
-                                <x-danger-button click="Livewire.emit('setDeleteSource', {{ $source->id }})">
+                                <x-danger-button click="window.livewire.emit('setDeleteSource', {{ $source->id }})">
                                     <i class="fa-solid fa-trash"></i>
                                 </x-danger-button>
                             </div>

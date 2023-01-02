@@ -8,8 +8,14 @@
                     <x-logo />
                 </a>
 
-                <div class="space-x-4">
+                <div class="space-x-4" x-data>
                     @auth
+                        <x-primary-button
+                            click="window.livewire.emit('createNewTask')"
+                        >
+                            Create
+                        </x-primary-button>
+
                         <x-nav-link
                             href="{{ route('home') }}"
                         >
@@ -51,6 +57,7 @@
             @endisset
         </div>
 
+        @livewire('tasks.create')
         @livewire('livewire-toast')
     </div>
 @endsection
