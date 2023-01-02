@@ -20,6 +20,10 @@ class Index extends Component
     {
         $source = Source::findOrFail($id);
 
+        if ($source->user_id !== request()->user()->id) {
+            abort(401);
+        }
+
         $source->update([
             'active' => !$source->active,
         ]);

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Source;
 
 use App\Models\Source;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -25,7 +26,8 @@ class IndexTest extends TestCase
 
         $this->get(route('sources'))
             ->assertSuccessful()
-            ->assertSeeLivewire('sources.index');
+            ->assertSeeLivewire('sources.index')
+            ->assertSeeLivewire('sources.delete');
     }
 
     /** @test */
@@ -68,5 +70,65 @@ class IndexTest extends TestCase
             ->assertSee("No")
             ->call('toggleActive', $source->id)
             ->assertSee("Yes");
+    }
+
+    /** @test */
+    function source_page_cannot_update_source_belonging_to_another_user(): void
+    {
+        $this->user();
+
+        $source = Source::factory()->for(User::factory()->create())->create([
+            'active' => false,
+        ]);
+
+        Livewire::test("sources.index")
+            ->call('toggleActive', $source->id)
+            ->assertUnauthorized();
+    }
+
+    /** @test */
+    public function source_page_correctly_inits_delete_confirmation(): void
+    {
+        $user = $this->user();
+
+        $source = Source::factory()->for($user)->create();
+
+        Livewire::test("sources.delete")
+            ->call("setDeleteSource", $source->id)
+            ->assertEmitted("deleteSourceConfirm");
+    }
+
+    /** @test */
+    public function source_page_can_delete_a_source(): void
+    {
+        $user = $this->user();
+
+        $source = Source::factory()->for($user)->create();
+
+        Livewire::test("sources.delete")
+            ->call("setDeleteSource", $source->id)
+            ->call("delete")
+            ->assertEmitted("sourceWasDeleted");
+
+        $this->assertDatabaseMissing('sources', [
+            'id' => $source->id,
+        ]);
+    }
+
+    /** @test */
+    public function source_page_cannot_delete_a_source_belonging_to_another_user(): void
+    {
+        $this->user();
+
+        $source = Source::factory()->for(User::factory()->create())->create();
+
+        Livewire::test("sources.delete")
+            ->call("setDeleteSource", $source->id)
+            ->call("delete")
+            ->assertUnauthorized();
+
+        $this->assertDatabaseHas('sources', [
+            'id' => $source->id,
+        ]);
     }
 }

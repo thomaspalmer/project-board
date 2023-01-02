@@ -36,6 +36,10 @@ class Delete extends Component
      */
     public function delete(): void
     {
+        if ($this->source->user_id !== request()->user()->id) {
+            abort(401);
+        }
+
         $this->source->delete();
 
         $this->emit("sourceWasDeleted");
