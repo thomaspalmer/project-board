@@ -10,6 +10,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['sourceWasDeleted' => '$refresh'];
+
     /**
      * @param int $id
      * @return void
@@ -21,6 +23,8 @@ class Index extends Component
         $source->update([
             'active' => !$source->active,
         ]);
+
+        $this->emitTo('livewire-toast', 'show', 'Source has been ' . (!$source->active ? 'enabled' : 'disabled'));
     }
 
     /**

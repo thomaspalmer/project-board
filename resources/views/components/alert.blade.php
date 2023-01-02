@@ -1,7 +1,12 @@
 <div>
     @foreach(['success', 'warning', 'error'] as $type)
         @if (session()->has($type))
-            <div class="rounded-md {{ $type === "success" ? "bg-green-300" : "" }} {{ $type === "warning" ? "bg-yellow-300" : "" }} {{ $type === "error" ? "bg-red-300" : "" }} bg-opacity-25 p-4">
+            <div
+                class="rounded-md {{ $type === "success" ? "bg-green-300" : "" }} {{ $type === "warning" ? "bg-yellow-300" : "" }} {{ $type === "error" ? "bg-red-300" : "" }} bg-opacity-25 p-4 mb-6"
+                x-data="{ isVisible: true }"
+                x-init="setTimeout(() => {isVisible = false}, 5000)"
+                x-show.transition.duration.1000ms="isVisible"
+            >
                 <div class="flex">
                     <div class="flex-shrink-0 text-green-400">
                         @switch($type)

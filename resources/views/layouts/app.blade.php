@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="flex flex-col min-h-screen bg-gray-50">
+    <div class="flex flex-col min-h-screen bg-gray-50 relative">
         <div class="w-full bg-white border-b border-gray-100">
             <div class="max-w-7xl w-full mx-auto py-4 flex justify-between items-center">
                 <a href="{{ route('home') }}">
@@ -50,5 +50,7 @@
                 {{ $slot }}
             @endisset
         </div>
+
+        @livewire('livewire-toast')
     </div>
 @endsection

@@ -1,6 +1,6 @@
 <{{ $type === "link" ? "a" : "button" }}
     class="{{ $class }}"
-{!! isset($click) ? "@click=\"" . $click . "\"" : "" !!}
+{!! isset($click) ? "@click.prevent=\"" . $click . "\"" : "" !!}
 {!! isset($href) ? "href=\"" . $href . "\"" : "" !!}
 >
 {!! $slot !!}

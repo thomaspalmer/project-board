@@ -32,7 +32,7 @@ class Create extends Component
             'credentials' => $this->credentials,
         ]);
 
-        session()->flash("success", "Source has been created successfully");
+        $this->emitTo('livewire-toast', 'show', 'Source has been created');
 
         return redirect(route('sources'));
     }

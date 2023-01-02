@@ -23,6 +23,7 @@ module.exports = {
         './resources/**/*.php',
         './resources/**/*.vue',
         './resources/**/*.twig',
+        './vendor/ascsoftw/livewire-toast/**/*.php'
     ],
     plugins: [
         require('@tailwindcss/forms'),
