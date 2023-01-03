@@ -10,12 +10,24 @@ use Livewire\Component;
 
 class Create extends Component
 {
+    /**
+     * @var string
+     */
     public string $name = '';
 
+    /**
+     * @var string
+     */
     public string $vendor = '';
 
+    /**
+     * @var bool
+     */
     public bool $active = true;
 
+    /**
+     * @var array
+     */
     public array $credentials = [];
 
     /**

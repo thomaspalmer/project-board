@@ -9,13 +9,6 @@ use Livewire\Component;
 class Backlog extends Component
 {
     /**
-     * @var string[]
-     */
-    protected $listeners = [
-        'taskWasCreated' => '$refresh',
-    ];
-
-    /**
      * @var ?Collection
      */
     public ?Collection $tasks;
