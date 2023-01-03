@@ -2,8 +2,7 @@
 
 namespace Tests\Feature\Source;
 
-use App\Models\Source;
-use App\Models\User;
+use App\Models\{Source, User};
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;

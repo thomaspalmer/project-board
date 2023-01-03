@@ -2,10 +2,8 @@
 
 namespace Tests\Feature\Tasks;
 
-use App\Models\Task;
-use App\Models\User;
+use App\Models\{Task, User};
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Livewire;
 use Tests\TestCase;

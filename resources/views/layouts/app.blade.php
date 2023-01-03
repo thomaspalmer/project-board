@@ -60,7 +60,7 @@
         @livewire('tasks.create')
         @livewire('tasks.edit')
         @livewire('tasks.complete')
-{{--        @livewire('tasks.delete')--}}
+        @livewire('tasks.delete')
         @livewire('livewire-toast')
     </div>
 @endsection

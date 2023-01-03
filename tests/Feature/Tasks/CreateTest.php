@@ -3,7 +3,6 @@
 namespace Tests\Feature\Tasks;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Livewire;
 use Tests\TestCase;
