@@ -22,7 +22,7 @@ class Create extends Component
     /**
      * @var string
      */
-    public string $dueAt = '';
+    public string $due_at = '';
 
     /**
      * @var string
@@ -35,7 +35,7 @@ class Create extends Component
     public function mount(): void
     {
         $this->priority = Priorities::Medium->value;
-        $this->dueAt = now()->format("Y-m-d");
+        $this->due_at = now()->format("Y-m-d");
     }
 
     /**
@@ -48,13 +48,13 @@ class Create extends Component
         request()->user()->tasks()->create([
             'title' => $this->title,
             'priority' => $this->priority,
-            'due_at' => $this->dueAt,
+            'due_at' => $this->due_at,
             'description' => $this->description,
         ]);
 
         $this->reset(['title', 'description']);
 
-        $this->emit("taskCreated");
+        $this->emit("taskWasCreated");
 
         $this->emitTo('livewire-toast', 'show', 'Task has been created');
     }
@@ -74,7 +74,7 @@ class Create extends Component
                 'required',
                 new Enum(Priorities::class),
             ],
-            'dueAt' => [
+            'due_at' => [
                 'required',
                 'date',
             ],

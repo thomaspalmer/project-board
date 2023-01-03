@@ -5,7 +5,7 @@
     @keydown.escape.window="isOpen = false"
     x-init="
         window.livewire.on('createNewTask', () => isOpen = true)
-        window.livewire.on('taskCreated', () => isOpen = false)
+        window.livewire.on('taskWasCreated', () => isOpen = false)
     "
     class="relative z-10"
     aria-labelledby="modal-title"
@@ -49,9 +49,9 @@
 
                             <x-field-container
                                 label="Due At"
-                                name="dueAt"
+                                name="due_at"
                             >
-                                <x-input type="date" name="dueAt" />
+                                <x-input type="date" name="due_at" />
                             </x-field-container>
 
                             <x-field-container

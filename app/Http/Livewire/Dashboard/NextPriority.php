@@ -12,7 +12,7 @@ class NextPriority extends Component
      * @var string[]
      */
     protected $listeners = [
-        'taskCreated' => '$refresh',
+        'taskWasCreated' => '$refresh',
     ];
 
     /**
