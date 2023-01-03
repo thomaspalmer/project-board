@@ -39,8 +39,11 @@
                 </span>
 
                 @if($task->link)
-                    <a href="{{ $task->link }}"
-                       class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                    <a
+                        target="_blank"
+                        href="{{ $task->link }}"
+                        class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800"
+                    >
                         <i class="fa-solid fa-link mr-1"></i>
                         <span>Link</span>
                     </a>
