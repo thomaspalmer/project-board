@@ -15,8 +15,8 @@ class ModalConfirm extends Component
         public string $openEvent,
         public string $closeEvent,
         public string $confirmClick,
-        public string $modalTitle = 'Delete Item',
-        public string $modalDescription = 'Are you sure you want to delete this item?',
+        public string $title = 'Delete Item',
+        public string $description = 'Are you sure you want to delete this item?',
     ){}
 
     /**
