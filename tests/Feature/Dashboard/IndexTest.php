@@ -36,7 +36,9 @@ class IndexTest extends TestCase
     {
         $user = $this->user();
 
-        $source = Source::factory()->for($user)->create();
+        $source = Source::factory()->for($user)->create([
+            'active' => true,
+        ]);
 
         Task::factory()->count(10)->for($user)->for($source)->create();
 
@@ -54,7 +56,9 @@ class IndexTest extends TestCase
     {
         $user = $this->user();
 
-        $source = Source::factory()->for($user)->create();
+        $source = Source::factory()->for($user)->create([
+            'active' => true,
+        ]);
 
         Task::factory()->count(10)->for($user)->for($source)->create();
 
@@ -72,7 +76,9 @@ class IndexTest extends TestCase
     {
         $user = $this->user();
 
-        $source = Source::factory()->for($user)->create();
+        $source = Source::factory()->for($user)->create([
+            'active' => true,
+        ]);
 
         Task::factory()->count(10)->for($user)->for($source)->create();
 
@@ -81,8 +87,8 @@ class IndexTest extends TestCase
         Livewire::test('dashboard.index')
             ->assertSuccessful()
             ->assertSeeHtml(view(
-                'livewire.dashboard.backlog', ['tasks' => $tasks->slice(2)])->render()
-            );
+                'livewire.dashboard.backlog', ['tasks' => $tasks->slice(2)]
+            )->render());
     }
 
 }

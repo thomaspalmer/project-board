@@ -124,7 +124,6 @@ class IndexTest extends TestCase
 
         Livewire::test("sources.delete")
             ->call("setDeleteSource", $source->id)
-            ->call("delete")
             ->assertUnauthorized();
 
         $this->assertDatabaseHas('sources', [

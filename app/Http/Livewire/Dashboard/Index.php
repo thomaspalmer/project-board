@@ -12,6 +12,8 @@ class Index extends Component
      */
     protected $listeners = [
         'taskWasCreated' => '$refresh',
+        'taskWasUpdated' => '$refresh',
+        'taskWasDeleted' => '$refresh',
     ];
 
     /**
@@ -23,11 +25,6 @@ class Index extends Component
             ->user()
             ->tasks()
             ->priorityOrder()
-            ->where(fn ($query) =>
-                $query
-                    ->whereHas('source', fn ($sourceQuery) => $sourceQuery->where('active', true))
-                    ->orWhereNull('source_id')
-            )
             ->get();
 
         return view('livewire.dashboard.index', [

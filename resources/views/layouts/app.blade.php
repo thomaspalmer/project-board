@@ -11,7 +11,7 @@
                 <div class="space-x-4" x-data>
                     @auth
                         <x-primary-button
-                            click="window.livewire.emit('createNewTask')"
+                            click="window.livewire.emit('createTask')"
                         >
                             Create
                         </x-primary-button>
@@ -58,6 +58,9 @@
         </div>
 
         @livewire('tasks.create')
+        @livewire('tasks.edit')
+{{--        @livewire('tasks.complete')--}}
+{{--        @livewire('tasks.delete')--}}
         @livewire('livewire-toast')
     </div>
 @endsection

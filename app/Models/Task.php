@@ -29,7 +29,7 @@ class Task extends Model
      * @var string[]
      */
     protected $appends = [
-        'high_priority',
+        'high_priority', 'has_source',
     ];
 
     /**
@@ -65,6 +65,14 @@ class Task extends Model
     }
 
     /**
+     * @return bool
+     */
+    public function getHasSourceAttribute(): bool
+    {
+        return $this->source_id !== null;
+    }
+
+    /**
      * @return Builder
      */
     public function scopePriorityOrder(): Builder
@@ -77,6 +85,11 @@ class Task extends Model
             ->whereNull('completed_at')
             ->orderByRaw('FIELD(priority, ' . $priorityOrder . ')')
             ->orderBy('due_at', 'asc')
-            ->orderBy('created_at', 'asc');
+            ->orderBy('created_at', 'asc')
+            ->where(fn ($query) =>
+                $query
+                    ->whereHas('source', fn ($sourceQuery) => $sourceQuery->where('active', true))
+                    ->orWhereNull('source_id')
+            );
     }
 }

@@ -4,8 +4,8 @@
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
     x-init="
-        window.livewire.on('createTask', () => isOpen = true)
-        window.livewire.on('taskWasCreated', () => isOpen = false)
+        window.livewire.on('editTask', () => isOpen = true)
+        window.livewire.on('taskWasUpdated', () => isOpen = false)
     "
     class="relative z-10"
     aria-labelledby="modal-title"
@@ -23,10 +23,10 @@
     >
         <div class="flex min-h-full items-end justify-center p-4 sm:items-center sm:p-0">
             <div class="max-w-xl w-full">
-                <form wire:submit.prevent="create">
+                <form wire:submit.prevent="update">
                     <x-card>
                         <x-card-header>
-                            Create Task
+                            Edit Task
                         </x-card-header>
 
                         <x-card-body class="space-y-4">
@@ -67,7 +67,7 @@
                                 Cancel
                             </x-primary-button>
                             <x-primary-button>
-                                Create
+                                Update
                             </x-primary-button>
                         </x-card-footer>
                     </x-card>

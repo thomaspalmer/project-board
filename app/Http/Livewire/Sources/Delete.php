@@ -28,6 +28,10 @@ class Delete extends Component
     {
         $this->source = Source::findOrFail($id);
 
+        if ($this->source->user_id !== request()->user()->id) {
+            abort(401);
+        }
+
         $this->emit("deleteSourceConfirm");
     }
 

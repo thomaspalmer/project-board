@@ -1,8 +1,18 @@
 <div class="divide-x divide-gray-200">
     @if ($task)
-        <div
-            class="px-4 py-2 border-gray-200 text-md {{ $task->high_priority ? 'bg-red-300 text-red-800' : 'bg-gray-50  text-gray-800' }}">
-            {{ $task->title }}
+        <div class="flex justify-between items-center px-4 py-2 border-gray-200 {{ $task->high_priority ? 'bg-red-300' : 'bg-gray-50' }}">
+            <div
+                class="text-md {{ $task->high_priority ? 'text-red-800' : 'text-gray-800' }}">
+                {{ $task->title }}
+            </div>
+
+            @if(!$task->has_source)
+                <div>
+                    @livewire("tasks.dropdown-options", [
+                        'task' => $task,
+                    ])
+                </div>
+            @endif
         </div>
 
         <x-card-body>
