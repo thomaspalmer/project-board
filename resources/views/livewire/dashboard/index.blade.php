@@ -3,11 +3,11 @@
         <div class="space-y-6">
             @livewire('dashboard.current-priority', [
                 'task' => $current,
-            ], key($current->id))
+            ], key($current?->id))
 
             @livewire('dashboard.next-priority', [
                 'task' => $next,
-            ], key($next->id))
+            ], key($next?->id))
         </div>
 
         <div>

@@ -19,7 +19,16 @@ class Index extends Component
      */
     public function render(): View
     {
-        $tasksInPriorityOrder = request()->user()->tasks()->priorityOrder()->get();
+        $tasksInPriorityOrder = request()
+            ->user()
+            ->tasks()
+            ->priorityOrder()
+            ->where(fn ($query) =>
+                $query
+                    ->whereHas('source', fn ($sourceQuery) => $sourceQuery->where('active', true))
+                    ->orWhereNull('source_id')
+            )
+            ->get();
 
         return view('livewire.dashboard.index', [
             'current' => $tasksInPriorityOrder->first(),
